@@ -3,6 +3,7 @@
 vim.cmd('syntax on')
 -- {{{ General Settings
 
+vim.opt.mouse = ""
 vim.opt.autoread = true
 vim.opt.encoding = 'utf-8'
 vim.opt.fileencoding = 'utf-8'
@@ -63,7 +64,6 @@ vim.opt.tags = './tags,tags;$HOME'
 
 -- {{{ Colorscheme and Theme Settings
 vim.opt.background = 'dark'
-vim.cmd('colorscheme monokai-phoenix')
 
 vim.cmd('highlight Comment cterm=italic')
 vim.cmd('highlight String cterm=italic gui=italic')

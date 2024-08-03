@@ -1,12 +1,12 @@
 -- {{{ Settings
 -- {{{ Basic mappings
-vim.api.nvim_set_keymap('n', '<leader>e', ':Neotree toggle<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>e', ':Neotree toggle<CR>', { noremap = true, silent = true, desc = 'File Explorer' })
 
-vim.api.nvim_set_keymap('n', '<leader>q', ':q<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>Q', ':q!<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>w', ':w<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>E', ':e<space>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>n', ':enew<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>q', ':q<CR>', { noremap = true, desc = 'Exit' })
+vim.api.nvim_set_keymap('n', '<leader>Q', ':q!<CR>', { noremap = true, desc = 'Exit Discarding Changes' })
+vim.api.nvim_set_keymap('n', '<leader>w', ':w<CR>', { noremap = true, desc = 'Save' })
+vim.api.nvim_set_keymap('n', '<leader>E', ':e<space>', { noremap = true, desc = 'Open file' })
+vim.api.nvim_set_keymap('n', '<leader>n', ':enew<CR>', { noremap = true, silent = true, desc = 'Empty file' })
 -- }}}
 
 -- {{{ Window resize mappings
@@ -17,22 +17,21 @@ vim.api.nvim_set_keymap('n', '<leader><Left>', ':vertical resize -5<CR>', { nore
 -- }}}
 
 -- {{{ Configuration file mappings
-vim.api.nvim_set_keymap('n', '<leader>T', ':e ~/.config/tmux/tmux.conf<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>K', ':e ~/.config/kitty/kitty.conf<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>T', ':e ~/.config/tmux/tmux.conf<CR>', { noremap = true, silent = true, desc = 'Edit Tmux Conf' })
+vim.api.nvim_set_keymap('n', '<leader>K', ':e ~/.config/kitty/kitty.conf<CR>', { noremap = true, silent = true, desc = 'Edit Kitty Conf' })
 -- }}}
 
 -- {{{ FZF mappings
-vim.api.nvim_set_keymap('n', '<leader>fw', ':Rg<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>fg', ':GitFiles<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>ff', ':Files<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>ft', ':set filetype=', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>fw', ':Rg<CR>', { noremap = true, silent = true, desc = 'Word' })
+vim.api.nvim_set_keymap('n', '<leader>fg', ':GitFiles<CR>', { noremap = true, silent = true, desc = 'Git files' })
+vim.api.nvim_set_keymap('n', '<leader>ff', ':Files<CR>', { noremap = true, silent = true, desc = 'Files' })
+vim.api.nvim_set_keymap('n', '<leader>ft', ':set filetype=', { noremap = true,  })
 -- }}}
 
 -- {{{ Buffer navigation mappings
-vim.api.nvim_set_keymap('n', '[b', ':bp<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', ']b', ':bn<CR>', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('n', '<leader>c', ':call HandleBufferClose()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>b-', ':b#<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '[b', ':bp<CR>', { noremap = true, silent = true, desc = 'Next Buffer' })
+vim.api.nvim_set_keymap('n', ']b', ':bn<CR>', { noremap = true, silent = true, desc = 'Previous Buffer' })
+vim.api.nvim_set_keymap('n', '<leader>b-', ':b#<CR>', { noremap = true, silent = true, desc = "Previous active Buffer" })
 vim.api.nvim_set_keymap('n', '<leader>bo', ':BufOnly<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>bO', ':BufOnly<space>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>B', ':Buffers<cr>', { noremap = true })
@@ -66,8 +65,8 @@ vim.api.nvim_set_keymap('n', '<leader>sd', ':SDelete<CR>', { noremap = true })
 -- }}}
 
 -- {{{ Commentary mappings
-vim.api.nvim_set_keymap('n', '<leader>/', ':Commentary<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<leader>/', ':Commentary<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>/', ':Commentary<CR>', { noremap = true, silent = true, desc = 'Comment' })
+vim.api.nvim_set_keymap('v', '<leader>/', ':Commentary<CR>', { noremap = true, silent = true, desc = 'Comment' })
 -- }}}
 
 -- {{{ Disable arrow keys
@@ -94,13 +93,13 @@ vim.api.nvim_set_keymap('n', '<leader>gh', ':help fugitive<CR>', { noremap = tru
 
 -- {{{ Miscellaneous mappings
 -- Toggle fold
-vim.api.nvim_set_keymap('n', '<leader><leader>', 'za', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>uw', ':set wrap!<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>un', ':set number!<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>ur', ':set relativenumber!<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>H', ':execute "Startify"<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader><leader>', 'za', { noremap = true, silent = true, desc = 'Toggle fold' })
+vim.api.nvim_set_keymap('n', '<leader>uw', ':set wrap!<CR>', { noremap = true, silent = true, desc = 'Toggle Wrap' })
+vim.api.nvim_set_keymap('n', '<leader>un', ':set nu!<CR>', { noremap = true, silent = true, desc = 'Toggle Number' })
+vim.api.nvim_set_keymap('n', '<leader>ur', ':set rnu!<CR>', { noremap = true, silent = true, desc = 'Toggle Relative Number' })
+vim.api.nvim_set_keymap('n', '<leader>H', ':execute "Startify"<CR>', { noremap = true, silent = true, desc = 'Go home' })
 -- File info
-vim.api.nvim_set_keymap('n', '<leader>i', ':f<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>i', ':f<CR>', { noremap = true, silent = true, desc = 'File information'})
 -- Quick escape
 vim.api.nvim_set_keymap('i', 'jj', '<esc>', { noremap = true, silent = true })
 -- }}}

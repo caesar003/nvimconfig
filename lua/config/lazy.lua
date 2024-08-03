@@ -15,20 +15,25 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- make sure to setup `mapleader` and `maplocalleader` before
--- loading lazy.nvim so that mappings are correct.
--- this is also a good place to setup other settings (vim.opt)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
--- setup lazy.nvim
 require("lazy").setup({
   spec = {
     { import = "plugins" },
   },
-  -- configure any other settings here. see the documentation for more details.
-  -- colorscheme that will be used when installing plugins.
-  install = { colorscheme = { "catppuccin" } },
-  -- automatically check for plugin updates
   checker = { enabled = true },
+})
+
+vim.cmd.colorscheme "oh-my-monokai"
+
+local wk = require("which-key")
+wk.add({
+  { "<leader>f", group = "File" },
+  { "<leader>b", group = "Buffers" },
+  { "<leader>g", group = "Git" },
+  { "<leader>h", group = "GitGutter Hunk" },
+  { "<leader>s", group = "Session" },
+  { "<leader>u", group = "UI" },
+
 })
