@@ -30,7 +30,8 @@ mv ~/.cache/nvim{,.bak}
 
 ```shell
 mkdir -p ~/.config/nvim
-git clone https:github.com/caesar003/nvimconfig ~/.config/nvim
+git clone https://github.com/caesar003/nvimconfig ~/.config/nvim
+mkdir -p ~/.config/nvim/colors
 ```
 
 - Start Neovim
