@@ -22,9 +22,9 @@ vim.api.nvim_set_keymap('n', '<leader>K', ':e ~/.config/kitty/kitty.conf<CR>', {
 -- }}}
 
 -- {{{ FZF mappings
-vim.api.nvim_set_keymap('n', '<leader>fw', ':FzfLua grep<CR>', { noremap = true, silent = true, desc = 'Pattern' })
-vim.api.nvim_set_keymap('n', '<leader>fg', ':FzfLua git_files<CR>', { noremap = true, silent = true, desc = 'Git files' })
-vim.api.nvim_set_keymap('n', '<leader>ff', ':FzfLua files<CR>', { noremap = true, silent = true, desc = 'Files' })
+vim.api.nvim_set_keymap('n', '<leader>fw', ':Rg<CR>', { noremap = true, silent = true, desc = 'Pattern' })
+vim.api.nvim_set_keymap('n', '<leader>fg', ':GitFiles<CR>', { noremap = true, silent = true, desc = 'Git files' })
+vim.api.nvim_set_keymap('n', '<leader>ff', ':Files<CR>', { noremap = true, silent = true, desc = 'Files' })
 vim.api.nvim_set_keymap('n', '<leader>ft', ':set filetype=', { noremap = true,  })
 -- }}}
 

@@ -35,5 +35,6 @@ wk.add({
   { "<leader>h", group = "GitGutter Hunk" },
   { "<leader>s", group = "Session" },
   { "<leader>u", group = "UI" },
-
 })
+
+vim.g.highlightedyank_highlight_duration = 300
