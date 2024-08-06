@@ -28,6 +28,7 @@ require("lazy").setup({
 vim.cmd.colorscheme "oh-my-monokai"
 
 local wk = require("which-key")
+
 wk.add({
   { "<leader>f", group = "File" },
   { "<leader>b", group = "Buffers" },
@@ -37,4 +38,12 @@ wk.add({
   { "<leader>u", group = "UI" },
 })
 
+
 vim.g.highlightedyank_highlight_duration = 300
+
+
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    vim.cmd("FzfLua setup_fzfvim_cmds")
+  end
+})

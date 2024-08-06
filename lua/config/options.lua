@@ -21,7 +21,7 @@ vim.opt.hidden = true
 vim.opt.timeout = true
 vim.opt.timeoutlen = 500
 vim.opt.ruler = true
-vim.opt.showmode = false
+vim.opt.showmode = true
 vim.opt.wildmenu = true
 vim.opt.wildmode = { 'list:longest', 'full' }
 vim.opt.tabstop = 2
@@ -128,6 +128,13 @@ vim.api.nvim_create_autocmd('FileType', {
     pattern = 'sh',
     command = 'setlocal foldmethod=syntax',
 })
+
+
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'lua',
+    command = 'setlocal foldmethod=indent',
+})
+
 -- }}}
 
 -- }}}
