@@ -54,7 +54,14 @@ vim.api.nvim_set_keymap('t', '<C-l>', '<C-\\><C-n><C-w>l', { noremap = true, sil
 -- }}}
 
 -- {{{ Floaterm mappings
-
+vim.api.nvim_set_keymap('n', '<F6>', ':FloatermToggle<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<F7>', ':FloatermNew<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<F8>', ':FloatermPrev<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<F9>', ':FloatermNext<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('t', '<F6>', '<C-\\><C-n>:FloatermToggle<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('t', '<F7>', '<C-\\><C-n>:FloatermNew<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('t', '<F8>', '<C-\\><C-n>:FloatermPrev<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('t', '<F9>', '<C-\\><C-n>:FloatermNext<CR>', { noremap = true, silent = true })
 -- }}}
 
 -- {{{ Session mappings
@@ -102,5 +109,6 @@ vim.api.nvim_set_keymap('n', '<leader>H', ':execute "Startify"<CR>', { noremap =
 vim.api.nvim_set_keymap('n', '<leader>i', ':f<CR>', { noremap = true, silent = true, desc = 'File information'})
 -- Quick escape
 vim.api.nvim_set_keymap('i', 'jj', '<esc>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', 'JJ', '<esc>', { noremap = true, silent = true })
 -- }}}
 -- }}}

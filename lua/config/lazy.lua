@@ -23,6 +23,7 @@ require("lazy").setup({
     { import = "plugins" },
   },
   checker = { enabled = true },
+
 })
 
 vim.cmd.colorscheme "oh-my-monokai"
@@ -42,8 +43,10 @@ wk.add({
 vim.g.highlightedyank_highlight_duration = 300
 
 
-vim.api.nvim_create_autocmd("VimEnter", {
-  callback = function()
-    vim.cmd("FzfLua setup_fzfvim_cmds")
-  end
-})
+-- vim.api.nvim_create_autocmd("VimEnter", {
+--   callback = function()
+--     vim.cmd("FzfLua setup_fzfvim_cmds")
+--   end
+-- })
+
+

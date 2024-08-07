@@ -1,4 +1,3 @@
 return {
-  { 'godlygeek/tabular' }
-}
+  { 'godlygeek/tabular' } }
 

@@ -1,3 +1,1 @@
-return {
-  {'vim-scripts/loremipsum'}
-}
+return { {'vim-scripts/loremipsum'} }

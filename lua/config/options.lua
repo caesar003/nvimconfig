@@ -3,6 +3,7 @@
 vim.cmd('syntax on')
 -- {{{ General Settings
 
+
 vim.opt.mouse = ""
 vim.opt.autoread = true
 vim.opt.encoding = 'utf-8'
@@ -58,7 +59,7 @@ vim.g.loaded_ruby_provider = 0
 -- }}}
 
 -- {{{ Status Line Settings
-vim.opt.statusline = '%f %m %r %y %{&ff} %h %= l:%l/%L c:%c %p%%'
+-- vim.opt.statusline = '%f %m %r %y %{&ff} %h %= l:%l/%L c:%c %p%%'
 vim.opt.tags = './tags,tags;$HOME'
 -- }}}
 
@@ -76,6 +77,14 @@ vim.cmd('hi SignColumn ctermbg=NONE guibg=NONE')
 vim.cmd('hi LineNr ctermbg=NONE guibg=NONE')
 vim.cmd('hi Floaterm guibg=NONE')
 vim.cmd('hi FloatermBorder guibg=NONE guifg=white')
+
+
+-- {{{ Floaterm configurations
+vim.g.floaterm_height = 0.8
+vim.g.floaterm_width = 0.8
+vim.g.floaterm_title = ' Floaterm: ($1|$2) '
+vim.g.floaterm_borderchars = '─│─│╭╮╯╰'
+-- }}}
 
 if vim.fn.exists('+termguicolors') == 1 and vim.opt.termguicolors:get() then
     vim.cmd('hi Visual guifg=#000000 guibg=#FFA500')
