@@ -1,3 +1,4 @@
+-- if true then return {} end
 return  {
   {
     "nvim-neo-tree/neo-tree.nvim",
@@ -40,7 +41,7 @@ return  {
       {text = "󰌵", texthl = "DiagnosticSignHint"})
 
       require("neo-tree").setup({
-        close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
+        close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
         popup_border_style = "rounded",
         enable_git_status = true,
         enable_diagnostics = true,
@@ -87,14 +88,14 @@ return  {
             },
             name = {
               trailing_slash = false,
-              use_git_status_colors = true,
+              -- use_git_status_colors = false,
               highlight = "NeoTreeFileName",
             },
             git_status = {
               symbols = {
                 -- Change type
-                added     = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
-                modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
+                added     = "✚", -- or "✚", but this is redundant info if you use git_status_colors on the name
+                modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
                 deleted   = "✖",-- this can only be used in the git_status source
                 renamed   = "󰁕",-- this can only be used in the git_status source
                 -- Status type

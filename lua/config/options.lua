@@ -3,7 +3,6 @@
 vim.cmd('syntax on')
 -- {{{ General Settings
 
-
 vim.opt.mouse = ""
 vim.opt.autoread = true
 vim.opt.encoding = 'utf-8'
@@ -41,7 +40,7 @@ vim.opt.wrap = true
 vim.opt.breakindent = true
 vim.opt.foldcolumn = '1'
 vim.opt.foldlevelstart = 99
-vim.opt.showtabline = 1
+vim.opt.showtabline = 2
 vim.opt.showcmd = true
 vim.opt.termguicolors = true
 vim.opt.belloff = 'all'
@@ -65,12 +64,12 @@ vim.opt.tags = './tags,tags;$HOME'
 
 -- {{{ Colorscheme and Theme Settings
 vim.opt.background = 'dark'
+vim.g.disable_bg = 1
 
 vim.cmd('highlight Comment cterm=italic')
 vim.cmd('highlight String cterm=italic gui=italic')
 vim.cmd('highlight Function cterm=italic gui=italic')
 vim.cmd('highlight Keyword cterm=italic gui=italic')
-vim.g.disable_bg = 1
 vim.cmd('hi Normal guibg=NONE ctermbg=NONE')
 vim.cmd('hi NonText ctermbg=NONE')
 vim.cmd('hi SignColumn ctermbg=NONE guibg=NONE')
@@ -78,13 +77,6 @@ vim.cmd('hi LineNr ctermbg=NONE guibg=NONE')
 vim.cmd('hi Floaterm guibg=NONE')
 vim.cmd('hi FloatermBorder guibg=NONE guifg=white')
 
-
--- {{{ Floaterm configurations
-vim.g.floaterm_height = 0.8
-vim.g.floaterm_width = 0.8
-vim.g.floaterm_title = ' Floaterm: ($1|$2) '
-vim.g.floaterm_borderchars = '─│─│╭╮╯╰'
--- }}}
 
 if vim.fn.exists('+termguicolors') == 1 and vim.opt.termguicolors:get() then
     vim.cmd('hi Visual guifg=#000000 guibg=#FFA500')
@@ -137,7 +129,6 @@ vim.api.nvim_create_autocmd('FileType', {
     pattern = 'sh',
     command = 'setlocal foldmethod=syntax',
 })
-
 
 vim.api.nvim_create_autocmd('FileType', {
     pattern = 'lua',

@@ -7,7 +7,6 @@ return {
       local utils = require("heirline.utils")
 
       local colors = {
-        -- Tailwind CSS colors
         bright_bg = "#f9fafb", -- Tailwind's `gray-50` for a light background
         bright_fg = "#374151", -- Tailwind's `gray-700` for a more subdued foreground
         red = "#ef4444", -- Tailwind's `red-500` for errors
@@ -42,7 +41,7 @@ return {
           provider = function(self)
             return " " .. self.status_dict.head
           end,
-          hl = {fg = colors.blue, bold = true}
+          hl = { fg = colors.orange, bold = false}
         },
         {
           -- Handle delimiters, icons, and counts
@@ -115,7 +114,7 @@ return {
           end
           return filename
         end,
-        hl = {fg = colors.cyan}
+        hl = { fg = utils.get_highlight("Directory").fg },
       }
 
       local FileFlags = {
@@ -152,12 +151,11 @@ return {
       {provider = "%<"}
       )
 
-      -- Define additional components
       local FileType = {
         provider = function()
           return " " .. vim.bo.filetype .. " "
         end,
-        hl = {fg = colors.purple, bold = true}
+        hl = { fg = utils.get_highlight("Type").fg, bold = true },
       }
 
       local FileEncoding = {
@@ -174,52 +172,238 @@ return {
         hl = {fg = colors.magenta}
       }
 
-      local LineNumber = {
-        provider = function()
-          local current_line = vim.fn.line(".")
-          local total_lines = vim.fn.line("$")
-          return string.format(" l:%d/%d ", current_line, total_lines)
-        end,
-        hl = {fg = colors.cyan}
+
+      local Space = {
+        provider = " ",
       }
 
-      local LineColumn = {
-        provider = function()
-          local column_number = vim.fn.col(".")
-          return string.format(" c:%d ", column_number)
+      local Ruler = {
+        provider = "%7(%l/%3L%):%2c %P",
+      }
+      local ScrollBar ={
+        static = {
+          sbar = { '▁', '▂', '▃', '▄', '▅', '▆', '▇', '█' }
+        },
+        provider = function(self)
+          local curr_line = vim.api.nvim_win_get_cursor(0)[1]
+          local lines = vim.api.nvim_buf_line_count(0)
+          local i = math.floor((curr_line - 1) / lines * #self.sbar) + 1
+          return string.rep(self.sbar[i], 2)
         end,
-        hl = {fg = colors.blue}
+        hl = { fg = colors.gray, bg = colors.bright_bg },
       }
 
-      local Percentage = {
-        provider = function()
-          local current_line = vim.fn.line(".")
-          local total_lines = vim.fn.line("$")
-          local percentage = math.floor(current_line * 100 / total_lines)
-          return string.format(" %d%%%% ", percentage)
-        end,
-        hl = {fg = colors.orange}
-      }
-
-      -- Define statusline components
-      local statusline = {
+      local StatusLine = {
         FileNameBlock,
-        {provider = " "},
+        Space,
         FileType,
-        {provider = " "},
+        Space,
         FileEncoding,
-        {provider = " "},
+        Space,
         FileFormat,
         {provider = "%="},
         Git,
         {provider = "%="},
-        LineNumber,
-        LineColumn,
-        Percentage
+        Ruler,
+        Space,
+        ScrollBar,
       }
 
-      -- Set up heirline with the statusline
-      heirline.setup({statusline = statusline})
+
+      local TablineBufnr = {
+        provider = function(self)
+          return tostring(self.bufnr) .. ". "
+        end,
+        hl = "Comment",
+      }
+
+      local TablineFileName = {
+        provider = function(self)
+          local filename = self.filename
+          filename = filename == "" and "[No Name]" or vim.fn.fnamemodify(filename, ":t")
+          return filename
+        end,
+        hl = function(self)
+          return { bold = self.is_active or self.is_visible, italic = true }
+        end,
+      }
+
+
+      local TablineFileFlags = {
+        {
+          condition = function(self)
+            return vim.api.nvim_get_option_value("modified", { buf = self.bufnr })
+          end,
+          provider = "[+]",
+          hl = { fg = "green" },
+        },
+        {
+          condition = function(self)
+            return not vim.api.nvim_get_option_value("modifiable", { buf = self.bufnr })
+            or vim.api.nvim_get_option_value("readonly", { buf = self.bufnr })
+          end,
+          provider = function(self)
+            if vim.api.nvim_get_option_value("buftype", { buf = self.bufnr }) == "terminal" then
+              return "  "
+            else
+              return ""
+            end
+          end,
+          hl = { fg = "orange" },
+        },
+      }
+
+      local TablineFileNameBlock = {
+        init = function(self)
+          self.filename = vim.api.nvim_buf_get_name(self.bufnr)
+        end,
+        hl = function(self)
+          if self.is_active then
+            return "TabLineSel"
+          else
+            return "TabLine"
+          end
+        end,
+        on_click = {
+          callback = function(_, minwid, _, button)
+            if (button == "m") then -- close on mouse middle click
+              vim.schedule(function()
+                vim.api.nvim_buf_delete(minwid, { force = false })
+              end)
+            else
+              vim.api.nvim_win_set_buf(0, minwid)
+            end
+          end,
+          minwid = function(self)
+            return self.bufnr
+          end,
+          name = "heirline_tabline_buffer_callback",
+        },
+        TablineBufnr,
+        FileIcon, -- turns out the version defined in #crash-course-part-ii-filename-and-friends can be reutilized as is here!
+        TablineFileName,
+        TablineFileFlags,
+      }
+
+      local TablineCloseButton = {
+        condition = function(self)
+          return not vim.api.nvim_get_option_value("modified", { buf = self.bufnr })
+        end,
+        { provider = " " },
+        {
+          provider = "✖",
+          hl = { fg = "gray" },
+          on_click = {
+            callback = function(_, minwid)
+              vim.schedule(function()
+                vim.api.nvim_buf_delete(minwid, { force = false })
+                vim.cmd.redrawtabline()
+              end)
+            end,
+            minwid = function(self)
+              return self.bufnr
+            end,
+            name = "heirline_tabline_close_buffer_callback",
+          },
+        },
+      }
+
+      local TablinePicker = {
+        condition = function(self)
+          return self._show_picker
+        end,
+        init = function(self)
+          local bufname = vim.api.nvim_buf_get_name(self.bufnr)
+          bufname = vim.fn.fnamemodify(bufname, ":t")
+          local label = bufname:sub(1, 1)
+          local i = 2
+          while self._picker_labels[label] do
+            if i > #bufname then
+              break
+            end
+            label = bufname:sub(i, i)
+            i = i + 1
+          end
+          self._picker_labels[label] = self.bufnr
+          self.label = label
+        end,
+        provider = function(self)
+          return self.label
+        end,
+        hl = { fg = "red", bold = true },
+      }
+
+      local TablineBufferBlock = utils.surround({ " ", " " }, function(self)
+        if self.is_active then
+          return utils.get_highlight("TabLineSel").bg
+        else
+          return utils.get_highlight("TabLine").bg
+        end
+      end, { TablineFileNameBlock, TablineCloseButton, TablinePicker })
+
+
+      local get_bufs = function()
+        return vim.tbl_filter(function(bufnr)
+          return vim.api.nvim_get_option_value("buflisted", { buf = bufnr })
+        end, vim.api.nvim_list_bufs())
+      end
+
+      local buflist_cache = {}
+
+      vim.api.nvim_create_autocmd({ "VimEnter", "UIEnter", "BufAdd", "BufDelete" }, {
+        callback = function()
+          vim.schedule(function()
+            local buffers = get_bufs()
+            for i, v in ipairs(buffers) do
+              buflist_cache[i] = v
+            end
+            for i = #buffers + 1, #buflist_cache do
+              buflist_cache[i] = nil
+            end
+
+            -- check how many buffers we have and set showtabline accordingly
+            if #buflist_cache > 1 then
+              vim.o.showtabline = 2 -- always
+            elseif vim.o.showtabline ~= 1 then -- don't reset the option if it's already at default value
+              vim.o.showtabline = 1 
+            end
+          end)
+        end,
+      })
+
+
+      local BufferLine = utils.make_buflist(
+      TablineBufferBlock,
+      { provider = " ", hl = { fg = "gray" } },
+      { provider = " ", hl = { fg = "gray" } },
+      function()
+        return buflist_cache
+      end,
+      false
+      )
+
+      vim.keymap.set("n", "<leader>bb", function()
+        local tabline = require("heirline").tabline
+        local buflist = tabline._buflist[1]
+        buflist._picker_labels = {}
+        buflist._show_picker = true
+        vim.cmd.redrawtabline()
+        local char = vim.fn.getcharstr()
+        local bufnr = buflist._picker_labels[char]
+        if bufnr then
+          vim.api.nvim_win_set_buf(0, bufnr)
+        end
+        buflist._show_picker = false
+        vim.cmd.redrawtabline()
+      end, {
+      noremap = true, desc = "Go to"
+    })
+
+      heirline.setup({
+        statusline = StatusLine, 
+        tabline = BufferLine,
+      })
+
     end
   }
 }

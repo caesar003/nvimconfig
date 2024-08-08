@@ -32,9 +32,9 @@ vim.api.nvim_set_keymap('n', '<leader>ft', ':set filetype=', { noremap = true,  
 vim.api.nvim_set_keymap('n', '[b', ':bp<CR>', { noremap = true, silent = true, desc = 'Next Buffer' })
 vim.api.nvim_set_keymap('n', ']b', ':bn<CR>', { noremap = true, silent = true, desc = 'Previous Buffer' })
 vim.api.nvim_set_keymap('n', '<leader>b-', ':b#<CR>', { noremap = true, silent = true, desc = "Previous active Buffer" })
-vim.api.nvim_set_keymap('n', '<leader>bo', ':BufOnly<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>bO', ':BufOnly<space>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>B', ':Buffers<cr>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>bo', ':Close all but this<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>bO', ':Close all but ...<space>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>bl', ':Buffers<cr>', { noremap = true })
 -- }}}
 
 -- {{{ Split window mappings
@@ -87,16 +87,6 @@ vim.api.nvim_set_keymap('n', '<Left>', '<NOP>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Right>', '<NOP>', { noremap = true })
 -- }}}
 
--- {{{ Git fugitive mappings
-vim.api.nvim_set_keymap('n', '<leader>gs', ':G status<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>gd', ':G diff<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>gp', ':G pull<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>gc', ':G commit<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>ga', ':G add<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>gb', ':G branch<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>gf', ':G log<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>gh', ':help fugitive<CR>', { noremap = true })
--- }}}
 
 -- {{{ Miscellaneous mappings
 -- Toggle fold
@@ -110,5 +100,7 @@ vim.api.nvim_set_keymap('n', '<leader>i', ':f<CR>', { noremap = true, silent = t
 -- Quick escape
 vim.api.nvim_set_keymap('i', 'jj', '<esc>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', 'JJ', '<esc>', { noremap = true, silent = true })
+
+
 -- }}}
 -- }}}
