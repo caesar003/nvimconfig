@@ -1,4 +1,4 @@
 -- if true then return {} end
 return {
-  { 'prettier/vim-prettier' }
+  {'prettier/vim-prettier'}
 }

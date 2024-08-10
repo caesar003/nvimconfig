@@ -20,4 +20,4 @@ function myplugin.explore_file()
   vim.cmd('normal n')
 end
 
-return myplugin
+-- return myplugin

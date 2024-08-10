@@ -28,15 +28,5 @@ require("lazy").setup({
 
 vim.cmd.colorscheme "oh-my-monokai"
 
-local wk = require("which-key")
-
-wk.add({
-  { "<leader>f", group = "File" },
-  { "<leader>b", group = "Buffers" },
-  { "<leader>g", group = "Git" },
-  { "<leader>h", group = "GitGutter Hunk" },
-  { "<leader>s", group = "Session" },
-  { "<leader>u", group = "UI" },
-})
 
 
