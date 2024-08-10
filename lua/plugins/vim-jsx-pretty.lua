@@ -1,4 +1,4 @@
- -- if truen then return {} end
+ if truen then return {} end
 return {
   {
     'maxmellon/vim-jsx-pretty',

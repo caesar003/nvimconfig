@@ -1,4 +1,4 @@
 if true then return {} end
 return {
-  { 'godlygeek/tabular' } }
-
+  { "windwp/nvim-ts-autotag", }
+}
