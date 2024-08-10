@@ -1,2 +1,4 @@
-if true then return {} end
-return { {'vim-scripts/loremipsum'} }
+return {
+  { "vim-scripts/loremipsum" },
+}
+

@@ -1,4 +1,4 @@
--- if true then return {} end
 return {
-  {'jiangmiao/auto-pairs'}
+  { "jiangmiao/auto-pairs" },
 }
+

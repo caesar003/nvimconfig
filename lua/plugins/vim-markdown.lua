@@ -1,4 +1,4 @@
-if true then return {} end
 return {
-  { 'preservim/vim-markdown' }
+  { "preservim/vim-markdown" },
 }
+
