@@ -1,4 +1,4 @@
-if true then return {} end
+
 return {
   {
     "voldikss/vim-floaterm",
@@ -18,4 +18,3 @@ return {
     end,
   },
 }
-

@@ -1,8 +1,10 @@
+-- if true then return {} end
 return {
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
     opts = {},
+
     keys = {},
     config = function()
       local wk = require "which-key"
