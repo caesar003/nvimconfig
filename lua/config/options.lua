@@ -1,9 +1,6 @@
-<<<<<<< HEAD
-=======
 -- Make sure to setup `mapleader` and `maplocalleader` before
 -- loading lazy.nvim so that mappings are correct.
 -- This is also a good place to setup other settings (vim.opt)
->>>>>>> e078809 (initial-commit)
 local opts = vim.opt
 local comm = vim.cmd
 local fun = vim.fn
@@ -59,10 +56,7 @@ opts.showcmd = true
 opts.termguicolors = true
 opts.belloff = "all"
 opts.visualbell = true
-<<<<<<< HEAD
-=======
 opts.scrolloff = 8
->>>>>>> e078809 (initial-commit)
 
 comm 'let &t_SI = "\\e[5 q"'
 comm 'let &t_EI = "\\e[1 q"'

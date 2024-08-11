@@ -39,9 +39,6 @@ map("n", "<leader>uw", ":set wrap!<CR>", { noremap = true, silent = true, desc =
 map("n", "<leader>un", ":set nu!<CR>", { noremap = true, silent = true, desc = "Toggle Number" })
 map("n", "<leader>ur", ":set rnu!<CR>", { noremap = true, silent = true, desc = "Toggle Relative Number" })
 map("n", "<leader>i", ":f<CR>", { noremap = true, silent = true, desc = "File information" })
-<<<<<<< HEAD
-=======
 map("n", "<leader>c", ":HandleBufferClose<CR>", { noremap = true, silent = true, desc = "Delete Buffer" })
->>>>>>> e078809 (initial-commit)
 map("i", "jj", "<esc>", { noremap = true, silent = true })
 map("i", "JJ", "<esc>", { noremap = true, silent = true })

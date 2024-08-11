@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 -- if true then return {} end
->>>>>>> e078809 (initial-commit)
 return {
   {
     "christoomey/vim-tmux-navigator",
@@ -14,7 +11,3 @@ return {
     end,
   },
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> e078809 (initial-commit)

@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 -- if true then return {} end
->>>>>>> e078809 (initial-commit)
 return {
   {
     "rebelot/heirline.nvim",
@@ -307,10 +304,6 @@ return {
         )
       end
       local buflist_cache = {}
-<<<<<<< HEAD
-=======
-
->>>>>>> e078809 (initial-commit)
       vim.api.nvim_create_autocmd({ "VimEnter", "UIEnter", "BufAdd", "BufDelete" }, {
         callback = function()
           vim.schedule(function()
@@ -329,10 +322,6 @@ return {
           end)
         end,
       })
-<<<<<<< HEAD
-=======
-
->>>>>>> e078809 (initial-commit)
       local BufferLine = utils.make_buflist(
       TablineBufferBlock,
       { provider = " ", hl = { fg = "gray" } },
@@ -340,10 +329,6 @@ return {
       function() return buflist_cache end,
       false
       )
-<<<<<<< HEAD
-=======
-
->>>>>>> e078809 (initial-commit)
       vim.keymap.set("n", "<leader>bb", function()
         local tabline = require("heirline").tabline
         local buflist = tabline._buflist[1]
@@ -356,13 +341,7 @@ return {
         buflist._show_picker = false
         vim.cmd.redrawtabline()
       end, { noremap = true, desc = "Go to" })
-<<<<<<< HEAD
-      heirline.setup { statusline = StatusLine, tabline = BufferLine }
-=======
-
-      -- heirline.setup { statusline = StatusLine, tabline = BufferLine }
       heirline.setup {  tabline = BufferLine }
->>>>>>> e078809 (initial-commit)
     end,
   },
 

@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-return {
-  { "folke/todo-comments.nvim", opts = {} },
-=======
+
 -- FIX: there's huge error here
 -- TODO: take care of error handling here
 -- HACK: there's actually a better way of writing it but I prefer this cleaner option
@@ -18,5 +15,4 @@ return {
     -- or leave it empty to use the default settings
     -- refer to the configuration section below
   }
->>>>>>> e078809 (initial-commit)
 }

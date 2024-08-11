@@ -15,7 +15,3 @@ return {
     end,
   },
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> e078809 (initial-commit)

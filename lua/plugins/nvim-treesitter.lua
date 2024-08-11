@@ -11,10 +11,6 @@ return {
         "json",
         "lua",
         "markdown",
-<<<<<<< HEAD
-=======
-        -- this is not okay
->>>>>>> e078809 (initial-commit)
         "markdown_inline",
         "python",
         "query",
