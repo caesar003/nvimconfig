@@ -95,12 +95,45 @@ return {
       }
       local FileEncoding =
       { provider = function() return " " .. vim.bo.fileencoding .. " " end, hl = { fg = colors.gray } }
+
       local FileFlags = {
-        { condition = function() return vim.bo.modified end, provider = "[+]", hl = { fg = colors.light_blue } },
+        { 
+          condition = function() 
+            return vim.bo.modified 
+          end, 
+          provider = "[+]", 
+          hl = { fg = colors.light_blue } 
+        },
         {
-          condition = function() return not vim.bo.modifiable or vim.bo.readonly end,
+          condition = function() 
+            return not vim.bo.modifiable or vim.bo.readonly 
+          end,
           provider = "",
           hl = { fg = "Orange" },
+        },
+      }
+
+      local TablineFileFlags = {
+        {
+          condition = function(self) 
+            return vim.api.nvim_get_option_value("modified", { buf = self.bufnr }) 
+          end,
+          provider = "[+]",
+          hl = { fg = colors.light_blue },
+        },
+        {
+          condition = function(self)
+            return not vim.api.nvim_get_option_value("modifiable", { buf = self.bufnr })
+            or vim.api.nvim_get_option_value("readonly", { buf = self.bufnr })
+          end,
+          provider = function(self)
+            if vim.api.nvim_get_option_value("buftype", { buf = self.bufnr }) == "terminal" then
+              return "  "
+            else
+              return ""
+            end
+          end,
+          hl = { fg = "orange" },
         },
       }
       local FileNameModifer = {
@@ -112,8 +145,9 @@ return {
         provider = function() return " " .. vim.bo.filetype .. " " end,
         hl = { fg = utils.get_highlight("Type").fg, bold = true },
       }
-      local FileFormat =
-      { provider = function() return "[" .. vim.bo.fileformat .. "]" end, hl = { fg = colors.magenta } }
+      local FileFormat = { 
+        provider = function() return "[" .. vim.bo.fileformat .. "]" end, hl = { fg = colors.magenta } 
+      }
       local Space = { provider = " " }
       local Ruler = { provider = "%7(%l/%3L%):%2c %P" }
       local TablinePicker = {
@@ -142,27 +176,8 @@ return {
         end,
         hl = function(self) return { bold = self.is_active or self.is_visible, italic = true } end,
       }
-      local TablineFileFlags = {
-        {
-          condition = function(self) return vim.api.nvim_get_option_value("modified", { buf = self.bufnr }) end,
-          provider = "[+]",
-          hl = { fg = "green" },
-        },
-        {
-          condition = function(self)
-            return not vim.api.nvim_get_option_value("modifiable", { buf = self.bufnr })
-            or vim.api.nvim_get_option_value("readonly", { buf = self.bufnr })
-          end,
-          provider = function(self)
-            if vim.api.nvim_get_option_value("buftype", { buf = self.bufnr }) == "terminal" then
-              return "  "
-            else
-              return ""
-            end
-          end,
-          hl = { fg = "orange" },
-        },
-      }
+
+
       local TablineBufnr = { provider = function(self) return tostring(self.bufnr) .. ". " end, hl = "Comment" }
       local ViMode = {
         init = function(self) self.mode = vim.fn.mode(1) end,
@@ -328,4 +343,5 @@ return {
       heirline.setup { statusline = StatusLine, tabline = BufferLine }
     end,
   },
+
 }
