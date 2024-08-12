@@ -42,3 +42,11 @@ map("n", "<leader>i", ":f<CR>", { noremap = true, silent = true, desc = "File in
 map("n", "<leader>c", ":HandleBufferClose<CR>", { noremap = true, silent = true, desc = "Delete Buffer" })
 map("i", "jj", "<esc>", { noremap = true, silent = true })
 map("i", "JJ", "<esc>", { noremap = true, silent = true })
+
+
+map("n", "<leader>lht", ":InsertHTML5Boilerplate<CR>", { noremap = true, silent = true, desc = "HTML 5" })
+map("n", "<leader>lja", ":InsertArrowFunction<CR>", { noremap = true, silent = true, desc = "Arrow Function" })
+map("n", "<leader>ljf", ":InsertJSFunctionExpression<CR>", { noremap = true, silent = true, desc = "Function" })
+map("n", "<leader>ljc", ":InsertFunctionalReactComponen<CR>t", { noremap = true, silent = true, desc = "Functional Component" })
+map("n", "<leader>ljn", ":InsertNamedReactComponent<CR>", { noremap = true, silent = true, desc = "Named Component" })
+map("n", "<leader>ljs", ":InsertJavaScriptSwitchStatement<CR>", { noremap = true, silent = true, desc = "Switch Statement" })

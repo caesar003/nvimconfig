@@ -184,6 +184,9 @@ return {
           { "<leader>h", group = "GitGutter Hunk" },
           { "<leader>s", group = "Session" },
           { "<leader>u", group = "UI" },
+          { "<leader>l", group = "Snippet" },
+          { "<leader>lh", group = "HTML" },
+          { "<leader>lj", group = "JavaScript" }
         }
       end,
     },
