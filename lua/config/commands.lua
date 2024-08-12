@@ -13,30 +13,35 @@ vim.api.nvim_create_user_command('HandleBufferClose', function()
     local choice = vim.fn.nr2char(vim.fn.getchar())
 
     if choice == 'y' or choice == 'Y' then
-      -- Save changes, switch to the previous buffer, and then close the current buffer
       vim.cmd('w')  -- Save the buffer
-      vim.cmd('bp') -- Switch to the previous buffer
-      vim.cmd('bd#')-- Close the previous buffer
+      if #buffers > 1 then
+        vim.cmd('bp')  -- Switch to the previous buffer
+        vim.cmd('bd#') -- Close the previously active buffer
+      else
+        vim.cmd('bd')  -- Close the only buffer, but the layout will reset
+      end
       vim.notify(current_buf_name .. " saved and closed.", vim.log.levels.INFO)
+
     elseif choice == 'n' or choice == 'N' then
-      -- Discard changes, switch to the previous buffer, and then close the current buffer
-      vim.cmd('bp')    -- Switch to the previous buffer
-      vim.cmd('bd!#')  -- Force close the current buffer
+      if #buffers > 1 then
+        vim.cmd('bp')   -- Switch to the previous buffer
+        vim.cmd('bd!#') -- Force close the previously active buffer without saving
+      else
+        vim.cmd('bd!')  -- Force close the only buffer without saving
+      end
       vim.notify(current_buf_name .. " closed without saving.", vim.log.levels.WARN)
+
     else
       vim.notify("Buffer close canceled.", vim.log.levels.INFO)
     end
   else
-    if #buffers == 1 then
-      -- Only one buffer is open, just close it
-      vim.cmd('bd')
-      vim.notify(current_buf_name .. " closed.", vim.log.levels.INFO)
-    else
-      -- More than one buffer is open
+    if #buffers > 1 then
       vim.cmd('bp')   -- Switch to the previous buffer
-      vim.cmd('bd#')  -- Close the current buffer
-      vim.notify(current_buf_name .. " closed.", vim.log.levels.INFO)
+      vim.cmd('bd#')  -- Close the previously active buffer
+    else
+      vim.cmd('bd')  -- Close the only buffer, but the layout will reset
     end
+    vim.notify(current_buf_name .. " closed.", vim.log.levels.INFO)
   end
 end, {})
 
@@ -135,5 +140,8 @@ vim.api.nvim_create_user_command('Noh', 'nohlsearch', {})
 vim.api.nvim_create_user_command('NOH', 'nohlsearch', {})
 vim.api.nvim_create_user_command('Ls', 'ls', {})
 vim.api.nvim_create_user_command('LS', 'ls', {})
+
+
+
 
 
