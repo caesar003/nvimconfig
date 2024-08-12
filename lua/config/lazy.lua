@@ -16,6 +16,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 
+local comm = vim.cmd
+
+
 
 require("config.commands")
 require("config.options")
@@ -28,7 +31,7 @@ require("lazy").setup({
   },
   install = { colorscheme = { "habamax" } },
   checker = { enabled = true },
-  performance = {
+  performance = { 
     rtp = {
       disabled_plugins = {
         "gzip",
@@ -44,6 +47,10 @@ require("lazy").setup({
 })
 
 vim.cmd.colorscheme("oh-my-monokai")
+-- vim.cmd.colorscheme("monochrome")
+-- vim.cmd.colorscheme("1989")
+-- vim.cmd.colorscheme("gruvbox")
+-- vim.cmd.colorscheme("base16-atelier-cave")
 
 if vim.fn.exists "+termguicolors" == 1 and vim.opt.termguicolors:get() then
   vim.cmd "hi Visual guifg=#000000 guibg=#FFA500"
@@ -54,3 +61,15 @@ else
   vim.cmd "hi Search ctermfg=208 ctermbg=234"
   vim.cmd "hi Cursor ctermfg=208 ctermbg=234"
 end
+
+
+comm "highlight Comment cterm=italic"
+comm "highlight String cterm=italic gui=italic"
+comm "highlight Function cterm=italic gui=italic"
+comm "highlight Keyword cterm=italic gui=italic"
+comm "hi Normal guibg=NONE ctermbg=NONE"
+comm "hi NonText ctermbg=NONE"
+comm "hi SignColumn ctermbg=NONE guibg=NONE"
+comm "hi LineNr ctermbg=NONE guibg=NONE"
+comm "hi Floaterm guibg=NONE"
+comm "hi FloatermBorder guibg=NONE guifg=white"

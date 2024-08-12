@@ -70,16 +70,7 @@ opts.tags = "./tags,tags;$HOME"
 opts.background = "dark"
 _g.disable_bg = 1
 
-comm "highlight Comment cterm=italic"
-comm "highlight String cterm=italic gui=italic"
-comm "highlight Function cterm=italic gui=italic"
-comm "highlight Keyword cterm=italic gui=italic"
-comm "hi Normal guibg=NONE ctermbg=NONE"
-comm "hi NonText ctermbg=NONE"
-comm "hi SignColumn ctermbg=NONE guibg=NONE"
-comm "hi LineNr ctermbg=NONE guibg=NONE"
-comm "hi Floaterm guibg=NONE"
-comm "hi FloatermBorder guibg=NONE guifg=white"
+
 
 if fun.has "unnamedplus" == 1 then opts.clipboard = "unnamed,unnamedplus" end
 if fun.has "termguicolors" == 1 then
