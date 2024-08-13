@@ -1,33 +1,51 @@
--- Handle buffer close
+-- Helper function to check if a buffer is modified
+local function is_buffer_modified(buf)
+  return vim.fn.getbufvar(buf, '&modified') == 1
+end
+
+-- Helper function to close the current buffer
+local function close_buffer(force)
+  if force then
+    vim.cmd('bd!')  -- Force close the buffer without saving
+  else
+    vim.cmd('bd')   -- Close the buffer normally
+  end
+end
+
+-- Helper function to switch to the previous buffer and close the current one
+local function switch_and_close_buffer(force)
+  vim.cmd('bp')        -- Switch to the previous buffer
+  if force then
+    vim.cmd('bd!#')    -- Force close the previously active buffer
+  else
+    vim.cmd('bd#')     -- Close the previously active buffer
+  end
+end
+
+-- Function to handle buffer close
 vim.api.nvim_create_user_command('HandleBufferClose', function()
   local buffers = vim.fn.getbufinfo({buflisted = 1})
   local current_buf = vim.fn.bufnr('%')
   local current_buf_name = vim.fn.bufname(current_buf) or "[Unnamed]"
 
-  -- Check if the current buffer has unsaved changes
-  local modified = vim.fn.getbufvar(current_buf, '&modified') == 1
-
-  if modified then
-    -- Prompt the user with options
+  if is_buffer_modified(current_buf) then
     print("Current buffer has unsaved changes. Do you want to save it? [y]es, [n]o, [C]ancel: ")
-    local choice = vim.fn.nr2char(vim.fn.getchar())
+    local choice = vim.fn.nr2char(vim.fn.getchar()):lower()
 
-    if choice == 'y' or choice == 'Y' then
+    if choice == 'y' then
       vim.cmd('w')  -- Save the buffer
       if #buffers > 1 then
-        vim.cmd('bp')  -- Switch to the previous buffer
-        vim.cmd('bd#') -- Close the previously active buffer
+        switch_and_close_buffer(false)
       else
-        vim.cmd('bd')  -- Close the only buffer, but the layout will reset
+        close_buffer(false)
       end
       vim.notify(current_buf_name .. " saved and closed.", vim.log.levels.INFO)
 
-    elseif choice == 'n' or choice == 'N' then
+    elseif choice == 'n' then
       if #buffers > 1 then
-        vim.cmd('bp')   -- Switch to the previous buffer
-        vim.cmd('bd!#') -- Force close the previously active buffer without saving
+        switch_and_close_buffer(true)
       else
-        vim.cmd('bd!')  -- Force close the only buffer without saving
+        close_buffer(true)
       end
       vim.notify(current_buf_name .. " closed without saving.", vim.log.levels.WARN)
 
@@ -36,10 +54,9 @@ vim.api.nvim_create_user_command('HandleBufferClose', function()
     end
   else
     if #buffers > 1 then
-      vim.cmd('bp')   -- Switch to the previous buffer
-      vim.cmd('bd#')  -- Close the previously active buffer
+      switch_and_close_buffer(false)
     else
-      vim.cmd('bd')  -- Close the only buffer, but the layout will reset
+      close_buffer(false)
     end
     vim.notify(current_buf_name .. " closed.", vim.log.levels.INFO)
   end
@@ -133,7 +150,6 @@ vim.api.nvim_create_user_command('InsertNamedReactComponent', function()
   }
   vim.api.nvim_put(lines, 'l', true, true)
 end, {})
-
 
 
 vim.api.nvim_create_user_command('Noh', 'nohlsearch', {})
