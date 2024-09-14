@@ -1,4 +1,3 @@
-if true then return {} end
 return {
   {
     "voldikss/vim-floaterm",
@@ -7,6 +6,7 @@ return {
       vim.g.floaterm_width = 0.8
       vim.g.floaterm_title = " Floaterm: ($1|$2) "
       vim.g.floaterm_borderchars = "─│─│╭╮╯╰"
+
       vim.api.nvim_set_keymap("n", "<F6>", ":FloatermToggle<CR>", { noremap = true, silent = true })
       vim.api.nvim_set_keymap("n", "<F7>", ":FloatermNew<CR>", { noremap = true, silent = true })
       vim.api.nvim_set_keymap("n", "<F8>", ":FloatermPrev<CR>", { noremap = true, silent = true })

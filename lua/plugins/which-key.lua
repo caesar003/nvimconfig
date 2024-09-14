@@ -5,7 +5,7 @@ return {
     event = "VeryLazy",
     opts = {
       ---@type false | "classic" | "modern" | "helix"
-      preset = "modern",
+      preset = "classic",
       -- Delay before showing the popup. Can be a number or a function that returns a number.
       ---@type number | fun(ctx: { keys: string, mode: string, plugin?: string }):number
       delay = function(ctx)
@@ -70,6 +70,7 @@ return {
         -- Additional vim.wo and vim.bo options
         bo = {},
         wo = {
+          winblend = 99,
           -- winblend = 10, -- value between 0-100 0 for fully opaque and 100 for fully transparent
         },
       },
@@ -184,9 +185,12 @@ return {
           { "<leader>h", group = "GitGutter Hunk" },
           { "<leader>s", group = "Session" },
           { "<leader>u", group = "UI" },
-          { "<leader>l", group = "Snippet" },
-          { "<leader>lh", group = "HTML" },
-          { "<leader>lj", group = "JavaScript" }
+          -- { "<leader>S", group = "Snippet" },
+          -- { "<leader>Sh", group = "HTML" },
+          -- { "<leader>Sj", group = "JavaScript" },
+          { "<leader>C", group = "Config" },
+          { "<leader>l", group = "Language server" },
+          { "<leader>t", group = "Timer" },
         }
       end,
     },

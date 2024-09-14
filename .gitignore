@@ -1,1 +1,5 @@
 .lua-format
+
+*.txt
+
+*.swp

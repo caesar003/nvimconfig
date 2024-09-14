@@ -26,6 +26,7 @@ return {
         magenta = "#d946ef", -- Tailwind's `pink-500` for magenta
         light_blue = "#bfdbfe" -- Tailwind's `blue-100` for light blue highlights
       }
+
       local FileIcon = {
         init = function(self)
           local filename = self.filename

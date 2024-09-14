@@ -15,15 +15,11 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-
 local comm = vim.cmd
-
-
 
 require("config.commands")
 require("config.options")
 require("config.keymaps")
-
 
 require("lazy").setup({
   spec = {
@@ -46,11 +42,7 @@ require("lazy").setup({
   },
 })
 
-vim.cmd.colorscheme("oh-my-monokai")
--- vim.cmd.colorscheme("monochrome")
--- vim.cmd.colorscheme("1989")
--- vim.cmd.colorscheme("gruvbox")
--- vim.cmd.colorscheme("base16-atelier-cave")
+require("config.theme");
 
 if vim.fn.exists "+termguicolors" == 1 and vim.opt.termguicolors:get() then
   vim.cmd "hi Visual guifg=#000000 guibg=#FFA500"

@@ -13,7 +13,6 @@ _g.maplocalleader = "\\"
 
 comm "syntax on"
 
-
 opts.mouse = ""
 opts.autoread = true
 opts.encoding = "utf-8"
@@ -67,9 +66,7 @@ _g.loaded_perl_provider = 0
 _g.loaded_ruby_provider = 0
 
 opts.tags = "./tags,tags;$HOME"
-opts.background = "dark"
 _g.disable_bg = 1
-
 
 
 if fun.has "unnamedplus" == 1 then opts.clipboard = "unnamed,unnamedplus" end
@@ -79,9 +76,13 @@ if fun.has "termguicolors" == 1 then
 end
 
 autocmd("FileType", { pattern = "javascript", command = "setlocal foldmethod=syntax" })
+autocmd("FileType", { pattern = "javascriptreact", command = "setlocal foldmethod=syntax" })
+autocmd("FileType", { pattern = "typescript", command = "setlocal foldmethod=syntax" })
+autocmd("FileType", { pattern = "typescriptreact", command = "setlocal foldmethod=syntax" })
 autocmd("FileType", { pattern = "html", command = "setlocal foldmethod=indent" })
 autocmd("FileType", { pattern = "css", command = "setlocal foldmethod=syntax" })
 autocmd("FileType", { pattern = "vim", command = "setlocal foldmethod=marker" })
 autocmd("FileType", { pattern = "json", command = "setlocal foldmethod=syntax" })
 autocmd("FileType", { pattern = "sh", command = "setlocal foldmethod=syntax" })
 autocmd("FileType", { pattern = "lua", command = "setlocal foldmethod=indent" })
+

@@ -22,48 +22,46 @@ local function switch_and_close_buffer(force)
   end
 end
 
--- Function to handle buffer close
-vim.api.nvim_create_user_command('HandleBufferClose', function()
-  local buffers = vim.fn.getbufinfo({buflisted = 1})
-  local current_buf = vim.fn.bufnr('%')
-  local current_buf_name = vim.fn.bufname(current_buf) or "[Unnamed]"
 
-  if is_buffer_modified(current_buf) then
-    print("Current buffer has unsaved changes. Do you want to save it? [y]es, [n]o, [C]ancel: ")
-    local choice = vim.fn.nr2char(vim.fn.getchar()):lower()
+-- Function to insert the output of the ':f' command at the current cursor position
+function InsertFileInfo()
+    -- Capture the output of the ':f' command using vim.fn.execute
+    local file_info = vim.fn.execute('silent! f')
+    
+    -- Get the current cursor position
+    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+    
+    -- Get the current line
+    local current_line = vim.api.nvim_get_current_line()
+    
+    -- Insert the file info at the cursor position
+    local new_line = current_line:sub(1, col) .. file_info .. current_line:sub(col + 1)
+    vim.api.nvim_set_current_line(new_line)
+    
+    -- Move the cursor to the end of the inserted text
+    vim.api.nvim_win_set_cursor(0, {row, col + #file_info})
+end
 
-    if choice == 'y' then
-      vim.cmd('w')  -- Save the buffer
-      if #buffers > 1 then
-        switch_and_close_buffer(false)
-      else
-        close_buffer(false)
-      end
-      vim.notify(current_buf_name .. " saved and closed.", vim.log.levels.INFO)
+-- Map the function to <leader>pf in normal mode
+-- vim.api.nvim_set_keymap('n', '<leader>pf', ':lua InsertFileInfo()<CR>', { noremap = true, silent = true })
 
-    elseif choice == 'n' then
-      if #buffers > 1 then
-        switch_and_close_buffer(true)
-      else
-        close_buffer(true)
-      end
-      vim.notify(current_buf_name .. " closed without saving.", vim.log.levels.WARN)
-
-    else
-      vim.notify("Buffer close canceled.", vim.log.levels.INFO)
+-- Function to reload Neovim configuration
+vim.api.nvim_create_user_command('ReloadConfig', function() 
+  -- Unload Lua modules
+  for name,_ in pairs(package.loaded) do
+    if name:match('^config') or name:match('^plugins') then
+      package.loaded[name] = nil
     end
-  else
-    if #buffers > 1 then
-      switch_and_close_buffer(false)
-    else
-      close_buffer(false)
-    end
-    vim.notify(current_buf_name .. " closed.", vim.log.levels.INFO)
   end
+
+  -- Reload the init.lua file
+  dofile(vim.fn.stdpath('config') .. '/init.lua')
 end, {})
 
--- Languge snippet section
+-- Map a key to reload the configuration
+vim.api.nvim_set_keymap('n', '<leader>r', ':lua ReloadConfig()<CR>', { noremap = true, silent = true })
 
+-- Languge snippet section
 vim.api.nvim_create_user_command('InsertHTML5Boilerplate', function() 
   local lines = {
     '<!DOCTYPE html>',
@@ -151,13 +149,37 @@ vim.api.nvim_create_user_command('InsertNamedReactComponent', function()
   vim.api.nvim_put(lines, 'l', true, true)
 end, {})
 
+vim.api.nvim_create_user_command('InsertJavascriptTryCatchBlock', function() 
+
+  local lines = {
+    'try { ',
+    '',
+    '} catch (err) {',
+    '',
+    '};',
+  }
+  vim.api.nvim_put(lines, 'l', true, true)
+
+end, {})
+
+
+vim.api.nvim_create_user_command('InsertJavascriptTryCatchFinallyBlock', function() 
+  local lines = {
+    'try {',
+    '',
+    '} catch (err) {',
+    '',
+    '} finally {',
+    '',
+    '};',
+  }
+  vim.api.nvim_put(lines, 'l', true, true)
+
+end, {})
+
 
 vim.api.nvim_create_user_command('Noh', 'nohlsearch', {})
 vim.api.nvim_create_user_command('NOH', 'nohlsearch', {})
 vim.api.nvim_create_user_command('Ls', 'ls', {})
 vim.api.nvim_create_user_command('LS', 'ls', {})
-
-
-
-
 
