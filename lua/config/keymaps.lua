@@ -16,17 +16,19 @@ map("n", "<leader><Down>", ":resize -5<CR>", { noremap = true, silent = true })
 map("n", "<leader><Right>", ":vertical resize +5<CR>", { noremap = true, silent = true })
 map("n", "<leader><Left>", ":vertical resize -5<CR>", { noremap = true, silent = true })
 
-map("n", "<leader>Cr", ":ReloadConfig<cr>", { noremap = true, silent = true, desc = "Reload Config" })
 map("n", "<leader>Ct", ":e ~/.config/tmux/tmux.conf<CR>", { noremap = true, silent = true, desc = "Edit Tmux Config" })
-map("n", "<leader>Ck", ":e ~/.config/kitty/kitty.conf<CR>", { noremap = true, silent = true, desc = "Edit Kitty Config" })
+map(
+	"n",
+	"<leader>Ck",
+	":e ~/.config/kitty/kitty.conf<CR>",
+	{ noremap = true, silent = true, desc = "Edit Kitty Config" }
+)
 
 map("n", "<leader>ft", ":set filetype=", { noremap = true })
 
 map("n", "[b", ":bp<CR>", { noremap = true, silent = true, desc = "Next Buffer" })
 map("n", "]b", ":bn<CR>", { noremap = true, silent = true, desc = "Previous Buffer" })
 map("n", "<leader>b-", ":b#<CR>", { noremap = true, silent = true, desc = "Previous active Buffer" })
-map("n", "<leader>-", ":b#<CR>", { noremap = true, silent = true, desc = "Previoues active buffer" })
-
 
 map("n", "|", ":vsplit<CR>", { noremap = true, silent = true })
 map("n", "\\", ":split<CR>", { noremap = true, silent = true })
@@ -54,20 +56,17 @@ map("n", "<leader>i", ":f<CR>", { noremap = true, silent = true, desc = "File in
 map("i", "jj", "<esc>", { noremap = true, silent = true })
 map("i", "JJ", "<esc>", { noremap = true, silent = true })
 
--- map("n", "<leader>lht", ":InsertHTML5Boilerplate<CR>", { noremap = true, silent = true, desc = "HTML 5" })
--- map("n", "<leader>lja", ":InsertArrowFunction<CR>", { noremap = true, silent = true, desc = "Arrow Function" })
--- map("n", "<leader>ljf", ":InsertJSFunctionExpression<CR>", { noremap = true, silent = true, desc = "Function" })
--- map("n", "<leader>ljc", ":InsertFunctionalReactComponen<CR>t", { noremap = true, silent = true, desc = "Functional Component" })
--- map("n", "<leader>ljn", ":InsertNamedReactComponent<CR>", { noremap = true, silent = true, desc = "Named Component" })
--- map("n", "<leader>ljs", ":InsertJavaScriptSwitchStatement<CR>", { noremap = true, silent = true, desc = "Switch Statement" })
-
-
 map("n", "<leader>ts", ":TimerStart ", { noremap = true, desc = "Start" })
-map("n", "<leader>tt", ":TimerStop<CR>", { noremap = true, desc = "Stop" } )
+map("n", "<leader>tt", ":TimerStop<CR>", { noremap = true, desc = "Stop" })
 map("n", "<leader>tp", ":TimerPause<CR>", { noremap = true, silent = true, desc = "Pause" })
 map("n", "<leader>tr", ":TimerResume<CR>", { noremap = true, silent = true, desc = "Resume" })
 map("n", "<leader>th", ":TimerHide<CR>", { noremap = true, silent = true, desc = "Hide" })
 map("n", "<leader>to", ":TimerShow<CR>", { noremap = true, silent = true, desc = "Show" })
 map("n", "<leader>te", ":TimerSession ", { noremap = true, desc = "Session" })
 
-map('n', '<leader>I', [[:lua vim.fn.setreg('a', vim.fn.execute('silent! f'))<CR>"ap]], { noremap = true, silent = true, desc = "Print file info" })
+map(
+	"n",
+	"<leader>I",
+	[[:lua vim.fn.setreg('a', vim.fn.execute('silent! f'))<CR>"ap]],
+	{ noremap = true, silent = true, desc = "Print file info" }
+)
