@@ -109,4 +109,7 @@ return {
 	{
 		"Reewr/vim-monokai-phoenix",
 	},
+	{
+		"nyoom-engineering/oxocarbon.nvim",
+	},
 }
