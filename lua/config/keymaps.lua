@@ -64,6 +64,23 @@ map("n", "<leader>th", ":TimerHide<CR>", { noremap = true, silent = true, desc =
 map("n", "<leader>to", ":TimerShow<CR>", { noremap = true, silent = true, desc = "Show" })
 map("n", "<leader>te", ":TimerSession ", { noremap = true, desc = "Session" })
 
+vim.api.nvim_create_user_command(
+  'InsertDate',
+  function()
+    vim.api.nvim_put({ os.date("%a %b %d %Y, %H.%M") }, "l", true, true)
+  end,
+  {}
+)
+
+vim.api.nvim_set_keymap(
+  'n',
+  '<Leader>d',
+  ':InsertDate<CR>',
+  { noremap = true, silent = true }
+)
+
+map("n", "<leader>d", ':InsertDate<CR>', { noremap = true, silent = true })
+
 map(
 	"n",
 	"<leader>I",

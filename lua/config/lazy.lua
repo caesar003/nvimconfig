@@ -46,8 +46,6 @@ require("lazy").setup({
 	},
 })
 
--- here I get the theme
-
 require("config.theme")
 
 if vim.fn.exists("+termguicolors") == 1 and vim.opt.termguicolors:get() then

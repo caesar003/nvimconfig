@@ -14,6 +14,8 @@ _g.maplocalleader = "\\"
 
 comm("syntax on")
 
+vim.o.guifont = "Fira Code:h11"
+
 opts.mouse = ""
 opts.autoread = true
 opts.encoding = "utf-8"
@@ -71,6 +73,8 @@ opts.tags = "./tags,tags;$HOME"
 _g.disable_bg = 1
 
 _g.lazyvim_php_lsp = "intelephense"
+
+_g.python3_host_prog = vim.fn.expand("~/.neovim-venv/bin/python")
 
 if fun.has("unnamedplus") == 1 then
 	opts.clipboard = "unnamed,unnamedplus"

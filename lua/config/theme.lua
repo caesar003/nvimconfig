@@ -1,5 +1,2 @@
--- ~.dev-tools/templates/nvim-dark.txt
-
--- dark theme
-vim.cmd.colorscheme("oh-my-monokai")
+vim.cmd.colorscheme("catppuccin_mocha")
 vim.opt.background = "dark"
