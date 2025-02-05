@@ -1,8 +1,3 @@
-local opts = vim.opt
-local comm = vim.cmd
-local fun = vim.fn
-local _g = vim.g
-local autocmd = vim.api.nvim_create_autocmd
 local map = vim.api.nvim_set_keymap
 
 map("n", "<leader>q", ":q<CR>", { noremap = true, desc = "Exit" })
@@ -18,10 +13,10 @@ map("n", "<leader><Left>", ":vertical resize -5<CR>", { noremap = true, silent =
 
 map("n", "<leader>Ct", ":e ~/.config/tmux/tmux.conf<CR>", { noremap = true, silent = true, desc = "Edit Tmux Config" })
 map(
-	"n",
-	"<leader>Ck",
-	":e ~/.config/kitty/kitty.conf<CR>",
-	{ noremap = true, silent = true, desc = "Edit Kitty Config" }
+  "n",
+  "<leader>Ck",
+  ":e ~/.config/kitty/kitty.conf<CR>",
+  { noremap = true, silent = true, desc = "Edit Kitty Config" }
 )
 
 map("n", "<leader>ft", ":set filetype=", { noremap = true })
@@ -64,26 +59,17 @@ map("n", "<leader>th", ":TimerHide<CR>", { noremap = true, silent = true, desc =
 map("n", "<leader>to", ":TimerShow<CR>", { noremap = true, silent = true, desc = "Show" })
 map("n", "<leader>te", ":TimerSession ", { noremap = true, desc = "Session" })
 
-vim.api.nvim_create_user_command(
-  'InsertDate',
-  function()
-    vim.api.nvim_put({ os.date("%a %b %d %Y, %H.%M") }, "l", true, true)
-  end,
-  {}
-)
+vim.api.nvim_create_user_command("InsertDate", function()
+  vim.api.nvim_put({ os.date("%a %b %d %Y, %H.%M") }, "l", true, true)
+end, {})
 
-vim.api.nvim_set_keymap(
-  'n',
-  '<Leader>d',
-  ':InsertDate<CR>',
-  { noremap = true, silent = true }
-)
+vim.api.nvim_set_keymap("n", "<Leader>d", ":InsertDate<CR>", { noremap = true, silent = true })
 
-map("n", "<leader>d", ':InsertDate<CR>', { noremap = true, silent = true })
+map("n", "<leader>d", ":InsertDate<CR>", { noremap = true, silent = true })
 
 map(
-	"n",
-	"<leader>I",
-	[[:lua vim.fn.setreg('a', vim.fn.execute('silent! f'))<CR>"ap]],
-	{ noremap = true, silent = true, desc = "Print file info" }
+  "n",
+  "<leader>I",
+  [[:lua vim.fn.setreg('a', vim.fn.execute('silent! f'))<CR>"ap]],
+  { noremap = true, silent = true, desc = "Print file info" }
 )

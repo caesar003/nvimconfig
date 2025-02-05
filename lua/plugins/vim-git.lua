@@ -1,6 +1,8 @@
+-- /home/caesar/.config/nvim/lua/plugins/vim-git.lua
 return {
 	{
 		"lewis6991/gitsigns.nvim",
+		event = "VeryLazy",
 		enabled = vim.fn.executable("git") == 1,
 		opts = {
 			signs = {

@@ -1,5 +1,8 @@
 return {
-	{ "preservim/vim-markdown" },
+	{
+		"preservim/vim-markdown",
+		ft = { "markdown" },
+	},
 
 	{
 		"iamcco/markdown-preview.nvim",

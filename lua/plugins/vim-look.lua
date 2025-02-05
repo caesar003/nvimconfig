@@ -1,3 +1,4 @@
+-- /home/caesar/.config/nvim/lua/plugins/vim-look.lua
 return {
 	{
 		"rebelot/heirline.nvim",

@@ -7,7 +7,6 @@ local comm = vim.cmd
 local fun = vim.fn
 local _g = vim.g
 local autocmd = vim.api.nvim_create_autocmd
-local map = vim.api.nvim_set_keymap
 
 _g.mapleader = " "
 _g.maplocalleader = "\\"

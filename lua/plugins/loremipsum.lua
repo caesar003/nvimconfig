@@ -1,3 +1,6 @@
 return {
-	{ "vim-scripts/loremipsum" },
+	{
+		"vim-scripts/loremipsum",
+		-- event = "VeryLazy",
+	},
 }

@@ -1,6 +1,7 @@
 return {
 	{
 		"caesar003/vim-closebuffer",
+		cmd = { "CloseBuffer" }, -- Loads only when you run :CloseBuffer
 		config = function()
 			vim.api.nvim_set_keymap(
 				"n",

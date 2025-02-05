@@ -46,7 +46,7 @@ require("lazy").setup({
 	},
 })
 
-require("config.theme")
+require("theme")
 
 if vim.fn.exists("+termguicolors") == 1 and vim.opt.termguicolors:get() then
 	vim.cmd("hi Visual guifg=#000000 guibg=#FFA500")

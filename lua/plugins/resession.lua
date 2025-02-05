@@ -1,6 +1,7 @@
 return {
 	{
 		"stevearc/resession.nvim",
+		-- event = "VeryLazy",
 		opts = {
 			autosave = {
 				enabled = true,

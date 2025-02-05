@@ -1,6 +1,7 @@
 return {
 	{
 		"voldikss/vim-floaterm",
+		event = "VeryLazy",
 		config = function()
 			local map = vim.api.nvim_set_keymap
 
@@ -13,6 +14,7 @@ return {
 			map("n", "<F7>", ":FloatermNew<CR>", { noremap = true, silent = true })
 			map("n", "<F8>", ":FloatermPrev<CR>", { noremap = true, silent = true })
 			map("n", "<F9>", ":FloatermNext<CR>", { noremap = true, silent = true })
+
 			map("t", "<F6>", "<C-\\><C-n>:FloatermToggle<CR>", { noremap = true, silent = true })
 			map("t", "<F7>", "<C-\\><C-n>:FloatermNew<CR>", { noremap = true, silent = true })
 			map("t", "<F8>", "<C-\\><C-n>:FloatermPrev<CR>", { noremap = true, silent = true })

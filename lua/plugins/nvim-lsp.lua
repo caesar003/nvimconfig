@@ -1,7 +1,7 @@
+-- /home/caesar/.config/nvim/lua/plugins/nvim-lsp.lua
 return {
 	{
 		"neovim/nvim-lspconfig",
-		event = "VeryLazy",
 		config = function()
 			local lspconfig = require("lspconfig")
 
@@ -116,6 +116,8 @@ return {
 					null_ls.builtins.formatting.stylua,
 					null_ls.builtins.formatting.shfmt,
 					null_ls.builtins.formatting.gofmt,
+
+					null_ls.builtins.diagnostics.shellcheck,
 				},
 			})
 		end,

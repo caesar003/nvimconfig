@@ -1,6 +1,7 @@
 return {
 	{
 		"numtostr/BufOnly.nvim",
+		-- cmd = { "BufOnly" }, -- Loads only when you use :BufOnly
 		config = function()
 			vim.api.nvim_set_keymap(
 				"n",

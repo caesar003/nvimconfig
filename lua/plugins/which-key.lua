@@ -3,7 +3,7 @@ return {
 		"folke/which-key.nvim",
 		event = "VeryLazy",
 		opts = {
-			preset = "classic",
+			preset = "helix",
 			delay = function(ctx)
 				return ctx.plugin and 0 or 200
 			end,

@@ -1,5 +1,6 @@
 return {
 	"epwalsh/pomo.nvim",
+	event = "VeryLazy",
 	version = "*",
 	lazy = true,
 	cmd = { "TimerStart", "TimerRepeat", "TimerSession" },
