@@ -1,2 +1,2 @@
-vim.cmd.colorscheme("catppuccin_mocha")
-vim.opt.background = "dark"
+vim.cmd.colorscheme("paper")
+vim.opt.background = "light"

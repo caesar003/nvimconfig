@@ -1,2 +1,2 @@
-vim.cmd.colorscheme("gruvbox")
-vim.opt.background = "light"
+vim.cmd.colorscheme("rosepine_moon")
+vim.opt.background = "dark"

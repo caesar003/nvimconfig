@@ -46,7 +46,17 @@ return {
 		},
 	},
 
-	{ "tpope/vim-fugitive" },
+	{
+		"tpope/vim-fugitive",
+		keys = {
+			{ "<leader>gac", "<cmd>G add %<cr>", desc = "Git Add Current File" },
+			{ "<leader>gc", "<cmd>G commit<cr>", desc = "Git Commit" },
+			{ "<leader>gp", "<cmd>G push<cr>", desc = "Git Push" },
+			{ "<leader>gs", "<cmd>G<cr>", desc = "Git Status" },
+			{ "<leader>gd", "<cmd>G diff<cr>", desc = "Git Diff" },
+			{ "<leader>gl", "<cmd>G log --oneline --graph --decorate<cr>", desc = "Git Log" },
+		},
+	},
 	{
 		"kdheepak/lazygit.nvim",
 		lazy = true,

@@ -91,6 +91,7 @@ return {
 					"typescript",
 					"vim",
 					"yaml",
+					"css",
 				},
 				sync_install = true,
 				auto_install = true,

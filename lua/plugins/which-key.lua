@@ -132,6 +132,7 @@ return {
 				{ "<leader>C", group = "Config" },
 				{ "<leader>l", group = "Language server" },
 				{ "<leader>t", group = "Timer" },
+				{ "<leader>g", group = "Git" },
 			})
 		end,
 	},
