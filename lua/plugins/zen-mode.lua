@@ -1,6 +1,6 @@
 return {
-	{
-		"folke/zen-mode.nvim",
-		event = "VeryLazy",
-	},
+  {
+    "folke/zen-mode.nvim",
+    event = "VeryLazy",
+  },
 }

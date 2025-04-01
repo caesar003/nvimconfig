@@ -3,7 +3,7 @@
 -- This is also a good place to setup other settings (vim.opt)
 
 local opts = vim.opt
-local comm = vim.cmd
+local cmd = vim.cmd
 local fun = vim.fn
 local _g = vim.g
 local autocmd = vim.api.nvim_create_autocmd
@@ -11,7 +11,7 @@ local autocmd = vim.api.nvim_create_autocmd
 _g.mapleader = " "
 _g.maplocalleader = "\\"
 
-comm("syntax on")
+cmd("syntax on")
 
 vim.o.guifont = "Fira Code:h11"
 
@@ -60,10 +60,10 @@ opts.belloff = "all"
 opts.visualbell = true
 opts.scrolloff = 8
 
-comm('let &t_SI = "\\e[5 q"')
-comm('let &t_EI = "\\e[1 q"')
-comm("set t_ZH=^[[3m")
-comm("set t_ZR=^[[23m")
+cmd('let &t_SI = "\\e[5 q"')
+cmd('let &t_EI = "\\e[1 q"')
+cmd("set t_ZH=^[[3m")
+cmd("set t_ZR=^[[23m")
 
 _g.loaded_perl_provider = 0
 _g.loaded_ruby_provider = 0
@@ -76,11 +76,11 @@ _g.lazyvim_php_lsp = "intelephense"
 _g.python3_host_prog = vim.fn.expand("~/.neovim-venv/bin/python")
 
 if fun.has("unnamedplus") == 1 then
-	opts.clipboard = "unnamed,unnamedplus"
+  opts.clipboard = "unnamed,unnamedplus"
 end
 if fun.has("termguicolors") == 1 then
-	comm('let &t_ZH="\\e[3m"')
-	comm('let &t_ZR="\\e[23m"')
+  cmd('let &t_ZH="\\e[3m"')
+  cmd('let &t_ZR="\\e[23m"')
 end
 
 autocmd("FileType", { pattern = "javascript", command = "setlocal foldmethod=syntax" })
@@ -97,15 +97,15 @@ autocmd("FileType", { pattern = "lua", command = "setlocal foldmethod=indent" })
 autocmd({ "BufRead", "BufNewFile" }, { pattern = { ".env", ".env.*" }, command = "set filetype=sh" })
 
 autocmd("BufWritePre", {
-	pattern = { "*.php", "*.blade.php", "*.lua", "*.sh", "*.bash", "*.go" },
-	callback = function()
-		vim.lsp.buf.format({ async = false })
-	end,
+  pattern = { "*.php", "*.blade.php", "*.lua", "*.sh", "*.bash", "*.go" },
+  callback = function()
+    vim.lsp.buf.format({ async = false })
+  end,
 })
 
 autocmd("BufWritePre", {
-	pattern = { "*.js", "*.ts", "*.jsx", "*.tsx", "*.json", "*.css", "*.html", "*.json" },
-	callback = function()
-		-- vim.cmd("Prettier")
-	end,
+  pattern = { "*.js", "*.ts", "*.jsx", "*.tsx", "*.json", "*.css", "*.html", "*.json" },
+  callback = function()
+    -- vim.cmd("Prettier")
+  end,
 })

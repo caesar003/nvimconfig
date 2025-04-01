@@ -1,6 +1,6 @@
 return {
-	{
-		"psliwka/vim-smoothie",
-		lazy = false,
-	},
+  {
+    "psliwka/vim-smoothie",
+    lazy = false,
+  },
 }

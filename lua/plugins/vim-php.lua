@@ -1,6 +1,6 @@
 return {
-	{
-		"jwalton512/vim-blade",
-		ft = "blade",
-	},
+  {
+    "jwalton512/vim-blade",
+    ft = "blade",
+  },
 }
