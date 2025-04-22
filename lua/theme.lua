@@ -1,2 +1,2 @@
-vim.cmd.colorscheme("rosepine_moon")
+vim.cmd.colorscheme("rosepine")
 vim.opt.background = "dark"

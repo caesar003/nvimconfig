@@ -78,6 +78,7 @@ _g.python3_host_prog = vim.fn.expand("~/.neovim-venv/bin/python")
 if fun.has("unnamedplus") == 1 then
   opts.clipboard = "unnamed,unnamedplus"
 end
+
 if fun.has("termguicolors") == 1 then
   cmd('let &t_ZH="\\e[3m"')
   cmd('let &t_ZR="\\e[23m"')

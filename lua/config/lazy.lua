@@ -49,13 +49,20 @@ require("lazy").setup({
 require("theme")
 
 if vim.fn.exists("+termguicolors") == 1 and vim.opt.termguicolors:get() then
-  vim.cmd("hi Visual guifg=#000000 guibg=#FFA500")
-  vim.cmd("hi Search guifg=#000000 guibg=#FFA500")
-  vim.cmd("hi Cursor guifg=#FFA500 guibg=#1a1a1a")
+  comm("hi Visual guifg=#000000 guibg=#FFA500")
+  comm("hi Search guifg=#000000 guibg=#FFA500")
+  comm("hi Cursor guifg=#FFA500 guibg=#1a1a1a")
+
+  comm("hi CursorLine guibg=#E5E5E5 guifg=#000000") -- light gray bg, black fg
+  -- comm("hi CursorLine guibg=#E5E5E5")           -- light gray bg, black fg
+  comm("hi CursorLineNr guifg=#D0D0D0 gui=bold")   -- softer light gray for line number
 else
-  vim.cmd("hi Visual ctermfg=208 ctermbg=234")
-  vim.cmd("hi Search ctermfg=208 ctermbg=234")
-  vim.cmd("hi Cursor ctermfg=208 ctermbg=234")
+  comm("hi Visual ctermfg=208 ctermbg=234")
+  comm("hi Search ctermfg=208 ctermbg=234")
+  comm("hi Cursor ctermfg=208 ctermbg=234")
+
+  comm("hi CursorLine ctermbg=236 ctermfg=208")
+  comm("hi CursorLineNr ctermfg=250 cterm=bold") -- 250 = light gray
 end
 
 comm("highlight Comment cterm=italic")
