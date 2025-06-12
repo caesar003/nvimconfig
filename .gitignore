@@ -5,3 +5,7 @@
 *.swp
 colors/*
 lazy-lock.json
+
+notes/
+
+lua/theme.lua

@@ -53,15 +53,14 @@ if vim.fn.exists("+termguicolors") == 1 and vim.opt.termguicolors:get() then
   comm("hi Search guifg=#000000 guibg=#FFA500")
   comm("hi Cursor guifg=#FFA500 guibg=#1a1a1a")
 
-  comm("hi CursorLine guibg=#E5E5E5 guifg=#000000") -- light gray bg, black fg
-  -- comm("hi CursorLine guibg=#E5E5E5")           -- light gray bg, black fg
-  comm("hi CursorLineNr guifg=#D0D0D0 gui=bold")   -- softer light gray for line number
+  comm("hi CursorLine guibg=#522c49 guifg=NONE")
+  comm("hi CursorLineNr guifg=#D0D0D0 gui=bold") -- softer light gray for line number
 else
   comm("hi Visual ctermfg=208 ctermbg=234")
   comm("hi Search ctermfg=208 ctermbg=234")
   comm("hi Cursor ctermfg=208 ctermbg=234")
 
-  comm("hi CursorLine ctermbg=236 ctermfg=208")
+  comm("hi CursorLine ctermbg=236 ctermfg=NONE")
   comm("hi CursorLineNr ctermfg=250 cterm=bold") -- 250 = light gray
 end
 

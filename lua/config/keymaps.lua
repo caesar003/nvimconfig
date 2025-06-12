@@ -34,10 +34,6 @@ map("t", "<C-j>", "<C-\\><C-n><C-w>j", { noremap = true, silent = true })
 map("t", "<C-k>", "<C-\\><C-n><C-w>k", { noremap = true, silent = true })
 map("t", "<C-l>", "<C-\\><C-n><C-w>l", { noremap = true, silent = true })
 
-map("i", "<Up>", "<NOP>", { noremap = true })
-map("i", "<Down>", "<NOP>", { noremap = true })
-map("i", "<Left>", "<NOP>", { noremap = true })
-map("i", "<Right>", "<NOP>", { noremap = true })
 map("n", "<Up>", "<NOP>", { noremap = true })
 map("n", "<Down>", "<NOP>", { noremap = true })
 map("n", "<Left>", "<NOP>", { noremap = true })
@@ -62,6 +58,13 @@ map("n", "<leader>te", ":TimerSession ", { noremap = true, desc = "Session" })
 
 map("n", "<leader>d", ":InsertDate<CR>", { noremap = true, silent = true })
 map("n", "<leader>c", ":ToggleJSDebug<CR>", { noremap = true, silent = true })
+
+map(
+	"n",
+	"<leader>r",
+	":%s/\\r//g<CR><C-O>",
+	{ noremap = true, silent = true, desc = "Remove carriage returns (^M) and restore cursor" }
+)
 
 map(
 	"n",
