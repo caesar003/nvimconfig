@@ -1,3 +1,4 @@
+-- file: /home/caesar/.config/nvim/lua/plugins/vim-closebuffer.lua
 return {
 	{
 		"caesar003/vim-closebuffer",

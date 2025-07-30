@@ -14,10 +14,10 @@ map("n", "<leader><Left>", ":vertical resize -5<CR>", { noremap = true, silent =
 
 map("n", "<leader>Ct", ":e ~/.config/tmux/tmux.conf<CR>", { noremap = true, silent = true, desc = "Edit Tmux Config" })
 map(
-	"n",
-	"<leader>Ck",
-	":e ~/.config/kitty/kitty.conf<CR>",
-	{ noremap = true, silent = true, desc = "Edit Kitty Config" }
+  "n",
+  "<leader>Ck",
+  ":e ~/.config/kitty/kitty.conf<CR>",
+  { noremap = true, silent = true, desc = "Edit Kitty Config" }
 )
 
 map("n", "<leader>ft", ":set filetype=", { noremap = true })
@@ -60,15 +60,17 @@ map("n", "<leader>d", ":InsertDate<CR>", { noremap = true, silent = true })
 map("n", "<leader>c", ":ToggleJSDebug<CR>", { noremap = true, silent = true })
 
 map(
-	"n",
-	"<leader>r",
-	":%s/\\r//g<CR><C-O>",
-	{ noremap = true, silent = true, desc = "Remove carriage returns (^M) and restore cursor" }
+  "n",
+  "<leader>r",
+  ":%s/\\r//g<CR><C-O>",
+  { noremap = true, silent = true, desc = "Remove carriage returns (^M) and restore cursor" }
 )
 
 map(
-	"n",
-	"<leader>I",
-	[[:lua vim.fn.setreg('a', vim.fn.execute('silent! f'))<CR>"ap]],
-	{ noremap = true, silent = true, desc = "Print file info" }
+  "n",
+  "<leader>I",
+  [[:lua vim.fn.setreg('a', vim.fn.execute('silent! f'))<CR>"ap]],
+  { noremap = true, silent = true, desc = "Print file info" }
 )
+
+map("n", "<leader>e", ":ToggleNeoTree<CR>", { noremap = true, silent = true })

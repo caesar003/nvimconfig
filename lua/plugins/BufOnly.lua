@@ -1,3 +1,4 @@
+-- fiel: lua/plugins/BufOnly.lua
 return {
 	{
 		"numtostr/BufOnly.nvim",

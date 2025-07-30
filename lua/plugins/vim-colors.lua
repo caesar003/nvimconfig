@@ -19,10 +19,14 @@ return {
 			require("astrotheme").setup({
 				-- Set your preferences here (optional)
 				palette = "astrodark", -- or "astrolight"
+				background = {
+					light = "astrolight",
+					dark = "astrodark",
+				},
 				transparent = true, -- Set true if you want transparency
-				inactive = true,
+				inactive = false,
 			})
-			vim.cmd("colorscheme astromars") -- or "astrolight"
+			vim.cmd("colorscheme astrodark") -- or "astrolight"
 		end,
 	},
 }

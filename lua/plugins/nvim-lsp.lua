@@ -177,7 +177,8 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		config = function()
 			require("nvim-treesitter.configs").setup({
-
+				modules = {},
+				ignore_install = {},
 				ensure_installed = {
 					"php",
 					"javascript",

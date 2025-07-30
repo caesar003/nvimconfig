@@ -48,20 +48,35 @@ require("lazy").setup({
 
 require("theme")
 
-if vim.fn.exists("+termguicolors") == 1 and vim.opt.termguicolors:get() then
-  comm("hi Visual guifg=#000000 guibg=#FFA500")
-  comm("hi Search guifg=#000000 guibg=#FFA500")
-  comm("hi Cursor guifg=#FFA500 guibg=#1a1a1a")
 
-  comm("hi CursorLine guibg=#522c49 guifg=NONE")
-  comm("hi CursorLineNr guifg=#D0D0D0 gui=bold") -- softer light gray for line number
-else
-  comm("hi Visual ctermfg=208 ctermbg=234")
-  comm("hi Search ctermfg=208 ctermbg=234")
-  comm("hi Cursor ctermfg=208 ctermbg=234")
 
-  comm("hi CursorLine ctermbg=236 ctermfg=NONE")
-  comm("hi CursorLineNr ctermfg=250 cterm=bold") -- 250 = light gray
+local function set_adaptive_cursor_highlights()
+  if vim.fn.exists("+termguicolors") == 1 and vim.opt.termguicolors:get() then
+    comm("hi Visual guifg=#000000 guibg=#FFA500")
+    comm("hi Search guifg=#000000 guibg=#FFA500")
+    comm("hi Cursor guifg=#FFA500 guibg=#1a1a1a")
+
+    -- Use colors that work better in both modes
+    if vim.o.background == "dark" then
+      comm("hi CursorLine guibg=#2a2a2a guifg=NONE") -- Subtle dark gray
+      comm("hi CursorLineNr guifg=#D0D0D0 gui=bold")
+    else
+      comm("hi CursorLine guibg=#e8e8e8 guifg=NONE") -- Subtle light gray
+      comm("hi CursorLineNr guifg=#505050 gui=bold")
+    end
+  else
+    comm("hi Visual ctermfg=208 ctermbg=234")
+    comm("hi Search ctermfg=208 ctermbg=234")
+    comm("hi Cursor ctermfg=208 ctermbg=234")
+
+    if vim.o.background == "dark" then
+      comm("hi CursorLine ctermbg=236 ctermfg=NONE")
+      comm("hi CursorLineNr ctermfg=250 cterm=bold")
+    else
+      comm("hi CursorLine ctermbg=253 ctermfg=NONE")
+      comm("hi CursorLineNr ctermfg=240 cterm=bold")
+    end
+  end
 end
 
 comm("highlight Comment cterm=italic")
@@ -74,3 +89,7 @@ comm("hi SignColumn ctermbg=NONE guibg=NONE")
 comm("hi LineNr ctermbg=NONE guibg=NONE")
 comm("hi Floaterm guibg=NONE")
 comm("hi FloatermBorder guibg=NONE guifg=white")
+
+set_adaptive_cursor_highlights()
+
+-- vim.cmd.colorscheme("astro")
