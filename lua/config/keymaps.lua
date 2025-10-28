@@ -1,4 +1,3 @@
--- ~/.config/nvim/lua/config/keymaps.lua
 local map = vim.api.nvim_set_keymap
 
 map("n", "<leader>q", ":q<CR>", { noremap = true, desc = "Exit" })
@@ -11,15 +10,6 @@ map("n", "<leader><Up>", ":resize +5<CR>", { noremap = true, silent = true })
 map("n", "<leader><Down>", ":resize -5<CR>", { noremap = true, silent = true })
 map("n", "<leader><Right>", ":vertical resize +5<CR>", { noremap = true, silent = true })
 map("n", "<leader><Left>", ":vertical resize -5<CR>", { noremap = true, silent = true })
-
--- map("n", "<leader>Ct", ":e ~/.config/tmux/tmux.conf<CR>", { noremap = true, silent = true, desc = "Edit Tmux Config" })
-
--- map(
--- 	"n",
--- 	"<leader>Ck",
--- 	":e ~/.config/kitty/kitty.conf<CR>",
--- 	{ noremap = true, silent = true, desc = "Edit Kitty Config" }
--- )
 
 map("n", "<leader>ft", ":set filetype=", { noremap = true })
 
@@ -49,16 +39,7 @@ map("n", "<leader>i", ":f<CR>", { noremap = true, silent = true, desc = "File in
 map("i", "jj", "<esc>", { noremap = true, silent = true })
 map("i", "JJ", "<esc>", { noremap = true, silent = true })
 
--- map("n", "<leader>ts", ":TimerStart ", { noremap = true, desc = "Start" })
--- map("n", "<leader>tt", ":TimerStop<CR>", { noremap = true, desc = "Stop" })
--- map("n", "<leader>tp", ":TimerPause<CR>", { noremap = true, silent = true, desc = "Pause" })
--- map("n", "<leader>tr", ":TimerResume<CR>", { noremap = true, silent = true, desc = "Resume" })
--- map("n", "<leader>th", ":TimerHide<CR>", { noremap = true, silent = true, desc = "Hide" })
--- map("n", "<leader>to", ":TimerShow<CR>", { noremap = true, silent = true, desc = "Show" })
--- map("n", "<leader>te", ":TimerSession ", { noremap = true, desc = "Session" })
-
 map("n", "<leader>d", ":InsertDate<CR>", { noremap = true, silent = true })
--- map("n", "<leader>c", ":ToggleJSDebug<CR>", { noremap = true, silent = true })
 
 map(
   "n",
@@ -73,5 +54,3 @@ map(
   [[:lua vim.fn.setreg('a', vim.fn.execute('silent! f'))<CR>"ap]],
   { noremap = true, silent = true, desc = "Print file info" }
 )
-
--- map("n", "<leader>e", ":ToggleNeoTree<CR>", { noremap = true, silent = true })

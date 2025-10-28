@@ -211,7 +211,6 @@ return {
       vim.api.nvim_set_keymap(
         "n",
         "<leader>e",
-        -- ":Neotree toggle position=float<CR>",
         ":Neotree toggle position=left<CR>",
         { noremap = true, silent = true, desc = "Toggle File Explorer" }
       )
