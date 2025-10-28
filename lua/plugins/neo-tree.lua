@@ -208,12 +208,13 @@ return {
       -- 🔧 Custom highlight for current file
       -- vim.api.nvim_set_hl(0, "NeoTreeCurrentNode", { fg = "#ffffff", bg = "#444444", bold = true })
 
-      -- vim.api.nvim_set_keymap(
-      -- 	"n",
-      -- 	"<leader>e",
-      -- 	":Neotree toggle position=float<CR>",
-      -- 	{ noremap = true, silent = true, desc = "Toggle File Explorer" }
-      -- )
+      vim.api.nvim_set_keymap(
+        "n",
+        "<leader>e",
+        -- ":Neotree toggle position=float<CR>",
+        ":Neotree toggle position=left<CR>",
+        { noremap = true, silent = true, desc = "Toggle File Explorer" }
+      )
       vim.api.nvim_set_keymap(
         "n",
         "<leader>o",

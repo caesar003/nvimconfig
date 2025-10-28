@@ -92,7 +92,7 @@ autocmd("FileType", { pattern = "html", command = "setlocal foldmethod=indent" }
 autocmd("FileType", { pattern = "css", command = "setlocal foldmethod=syntax" })
 autocmd("FileType", { pattern = "vim", command = "setlocal foldmethod=marker" })
 autocmd("FileType", { pattern = "json", command = "setlocal foldmethod=syntax" })
-autocmd("FileType", { pattern = "sh", command = "setlocal foldmethod=syntax" })
+autocmd("FileType", { pattern = "sh", command = "setlocal foldmethod=marker" })
 autocmd("FileType", { pattern = "lua", command = "setlocal foldmethod=indent" })
 
 autocmd({ "BufRead", "BufNewFile" }, { pattern = { ".env", ".env.*" }, command = "set filetype=sh" })

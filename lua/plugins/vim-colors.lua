@@ -1,4 +1,7 @@
 -- ~/.config/nvim/lua/plugins/vim-colors.lua
+if true then
+	return {}
+end
 return {
 	{
 		"mustardfrog/pinkish_day",
