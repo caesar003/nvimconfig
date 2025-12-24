@@ -73,7 +73,10 @@ _g.disable_bg = 1
 
 _g.lazyvim_php_lsp = "intelephense"
 
-_g.python3_host_prog = vim.fn.expand("~/.neovim-venv/bin/python")
+-- _g.python3_host_prog = vim.fn.expand("~/.neovim-venv/bin/python")
+-- let g:python3_host_prog = expand("~/.config/nvim/venv/bin/python")
+-- Lua
+_g.python3_host_prog = os.getenv("HOME") .. "/.config/nvim/venv/bin/python"
 
 if fun.has("unnamedplus") == 1 then
   opts.clipboard = "unnamed,unnamedplus"

@@ -5,29 +5,11 @@ cmd("NOH", "nohlsearch", {})
 cmd("Ls", "ls", {})
 cmd("LS", "ls", {})
 
-local function is_neotree_open()
-  for _, win in pairs(vim.api.nvim_list_wins()) do
-    local buf = vim.api.nvim_win_get_buf(win)
-    local ft = vim.bo[buf].filetype
-    if ft == "neo-tree" then
-      return true
-    end
-  end
-  return false
-end
 
-cmd("ToggleNeoTree", function()
-  if is_neotree_open() then
-    vim.cmd("Neotree toggle")
-  else
-    vim.cmd("Neotree reveal position=float")
-  end
-end, {})
 
 cmd("InsertDate", function()
   vim.api.nvim_put({ tostring(os.date("%a %b %d %Y, %H.%M")) }, "l", true, true)
 end, {})
-
 
 
 -- NEW: Add console.log abbreviation only for JS/TS-like filetypes

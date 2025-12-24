@@ -1,4 +1,3 @@
--- file: /home/caesar/.config/nvim/lua/plugins/vim-javascript.lua
 return {
   {
     "pangloss/vim-javascript",
@@ -15,7 +14,6 @@ return {
   },
 
   {
-
     "maxmellon/vim-jsx-pretty",
     config = function()
       vim.g.vim_jsx_pretty_disable_js = 0
@@ -66,15 +64,12 @@ return {
     "caesar003/vim-xtract",
     ft = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "svelte" },
     config = function()
-      -- Configuration options
-      vim.g.vim_xtract_silent = false -- Set to true to disable all messages
+      vim.g.vim_xtract_silent = false    -- Set to true to disable all messages
       vim.g.vim_xtract_use_notify = true -- Use notify in Neovim
-      vim.g.vim_xtract_var_name = "obj" -- Default variable name
+      vim.g.vim_xtract_var_name = "obj"  -- Default variable name
 
-      -- Optional: Customize output format
       vim.g.vim_xtract_template = "const {\n{{keys}}\n} = {{var}};"
 
-      -- Simplified key mappings
       vim.keymap.set("v", "<leader>X", ":<C-u>Xtract<CR>", {
         desc = "Extract object properties",
         silent = true,
@@ -85,7 +80,6 @@ return {
         silent = true,
       })
 
-      -- Optional: Add custom template commands
       vim.api.nvim_create_user_command("XtractTS", function()
         vim.g.vim_xtract_template = "const { {{keys}} } = {{var}};"
         vim.cmd("Xtract")

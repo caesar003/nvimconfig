@@ -1,3 +1,5 @@
+-- /home/caesar/.config/nvim/lua/plugins/todo-comments.lua
+
 -- I put this here as cheatsheet
 -- FIX: there's huge error here
 -- TODO: take care of error handling here
@@ -6,16 +8,25 @@
 -- PERF: consider writing
 -- NOTE: this is important to
 -- TEST:
+-- DEBUG: debugging only
 
 return {
-	"folke/todo-comments.nvim",
-	event = "VeryLazy",
-	dependencies = { "nvim-lua/plenary.nvim" },
-	opts = {
-		-- your configuration comes here
-		-- or leave it empty to use the default settings
-		-- refer to the configuration section below
-	},
+  "folke/todo-comments.nvim",
+  event = "VeryLazy",
+  dependencies = { "nvim-lua/plenary.nvim" },
+  opts = {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+
+    keywords = {
+      DEBUG = {
+        icon = "", -- pick any symbol you like
+        color = "warning", -- highlight color
+        alt = { "TEMP", "CLEANUP" }, -- also highlight TEMP: / CLEANUP:
+      },
+    },
+  },
 }
 
 -- return {

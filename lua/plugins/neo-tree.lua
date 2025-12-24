@@ -1,5 +1,3 @@
--- vim-neo-tree.lua
--- lua/plugins/neo-tree.lua
 return {
   {
     "nvim-neo-tree/neo-tree.nvim",
@@ -53,11 +51,13 @@ return {
             expander_highlight = "NeoTreeExpander",
           },
           icon = {
-            folder_closed = "",
-            folder_open = "",
-            folder_empty = "󰜌",
-            default = "*",
+            folder_closed = "", -- nf-custom-folder
+            folder_open = "", -- nf-custom-folder_open
+            folder_empty = "", -- nf-fa-folder
+            folder_empty_open = "", -- nf-fa-folder_open
+            default = "", -- nf-fa-file_text
             highlight = "NeoTreeFileIcon",
+            use_filtered_colors = true,
           },
           modified = { symbol = "[+]", highlight = "NeoTreeModified" },
           name = { trailing_slash = false, highlight = "NeoTreeFileName" },
@@ -217,7 +217,7 @@ return {
       vim.api.nvim_set_keymap(
         "n",
         "<leader>o",
-        ":Neotree focus<CR>",
+        ":Neotree focus position=left<CR>",
         { noremap = true, silent = true, desc = "File Explorer Focus" }
       )
     end,

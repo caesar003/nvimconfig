@@ -1,6 +1,6 @@
 return {
-	{
-		"fladson/vim-kitty",
-		event = "VeryLazy",
-	},
+  {
+    "fladson/vim-kitty",
+    event = "VeryLazy",
+  },
 }
